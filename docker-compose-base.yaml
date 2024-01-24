@@ -1,7 +1,5 @@
 version: "3.8"
 
-services:
-
 # databases
   keycloak-db:
     container_name: keycloak-db
@@ -17,6 +15,8 @@ services:
   keycloak:
     container_name: keycloak
     build: .
+    depends_on:
+      - keycloak-db
     expose:
       - "80"
     command:
