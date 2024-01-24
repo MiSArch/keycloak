@@ -12,6 +12,13 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    volumes:
+      - keycloak-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: pg_isready -U postgres -d user -h localhost -p 5432
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   # backends
   keycloak:
@@ -26,3 +33,19 @@ services:
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
+
+  # dapr
+  keycloak-dapr:
+    image: "daprio/daprd:edge"
+    command: [
+      "./daprd",
+      "--app-id", "user",
+      "--app-port", "8080",
+      "--dapr-http-port", "3500",
+      "-placement-host-address", "placement:50006",
+      "--config", "/config.yaml",
+      "--resources-path", "/components"
+    ]
+    network_mode: "service:keycloak"
+volumes:
+  keycloak-db-data:
