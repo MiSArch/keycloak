@@ -16,7 +16,7 @@ jobs:
           submodules: true
       - name: Update submodule
         run: |
-          cd user
+          cd keycloak
           git checkout ${{ github.sha }}
       - uses: peter-evans/create-pull-request@v5
         with:
