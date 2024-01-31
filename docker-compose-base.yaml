@@ -6,12 +6,13 @@ services:
   keycloak-db:
     container_name: keycloak-db
     image: postgres:16-alpine
-    restart: always
+    restart: unless-stopped
     expose:
       - "5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=keycloak
     volumes:
       - keycloak-db-data:/var/lib/postgresql/data
     healthcheck:
@@ -22,10 +23,12 @@ services:
 
   # backends
   keycloak:
+    restart: unless-stopped
     container_name: keycloak
     build: .
     depends_on:
-      - keycloak-db
+      keycloak-db:
+        condition: service_healthy
     expose:
       - "80"
     command:
@@ -33,13 +36,19 @@ services:
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
+    healthcheck:
+      test: wget http://localhost:80/health || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 20
+      start_period: 10s
 
   # dapr
   keycloak-dapr:
     image: "daprio/daprd:edge"
     command: [
       "./daprd",
-      "--app-id", "user",
+      "--app-id", "keycloak",
       "--app-port", "80",
       "--dapr-http-port", "3500",
       "-placement-host-address", "placement:50006",
