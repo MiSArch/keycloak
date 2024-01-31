@@ -20,11 +20,11 @@ jobs:
           git checkout ${{ github.sha }}
       - uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: Update user schema
-          branch: update/user
+          commit-message: Update keycloak repo
+          branch: update/keycloak
           token: ${{ secrets.INFRASTRUCTURE_DOCKER_PUSH_SECRET }}
       - name: Set to auto merge
         run: gh pr merge update/user --auto --merge -R misarch/infrastructure-docker
         env:
-          GH_TOKEN: ${{ secrets.INFRASTRUCTURE_DOCKER_PUSH_SECRET }} 
+          GH_TOKEN: ${{ secrets.INFRASTRUCTURE_DOCKER_PUSH_SECRET }}
 
