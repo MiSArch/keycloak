@@ -16,7 +16,7 @@ services:
     volumes:
       - keycloak-db-data:/var/lib/postgresql/data
     healthcheck:
-      test: pg_isready -U postgres -d user -h localhost -p 5432
+      test: pg_isready -U postgres -d keycloak -h localhost -p 5432
       interval: 10s
       timeout: 5s
       retries: 3
