@@ -110,6 +110,7 @@ public class DaprEventListenerProvider implements EventListenerProvider {
                 bodyPublisher = HttpRequest.BodyPublishers.ofString(objectMapper.writeValueAsString(event));
                 final HttpRequest request = HttpRequest.newBuilder()
                         .uri(URI.create("http://localhost:3500/v1.0/publish/pubsub/user/user/create"))
+                        .header("Content-Type", "application/json")
                         .POST(bodyPublisher)
                         .build();
                 httpClient.send(request, HttpResponse.BodyHandlers.ofString());
