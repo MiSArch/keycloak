@@ -4,7 +4,6 @@ services:
 
   # databases
   keycloak-db:
-    container_name: keycloak-db
     image: postgres:16-alpine
     restart: unless-stopped
     expose:
@@ -24,7 +23,6 @@ services:
   # backends
   keycloak:
     restart: unless-stopped
-    container_name: keycloak
     build: .
     depends_on:
       keycloak-db:
