@@ -1,7 +1,13 @@
+FROM maven:3.9.6-eclipse-temurin-17
+COPY spi-extension /app
+WORKDIR /app
+RUN mvn clean compile package
+
 FROM quay.io/keycloak/keycloak:23.0
 
 WORKDIR /app/misarch/template
 COPY keycloak-realm-template.json .
+COPY --from=0 /app/target/keycloak-dapr-events.jar /opt/keycloak/providers/keycloak-dapr-events.jar
 
 ENV KC_DB="postgres"
 ENV KC_DB_URL="jdbc:postgresql://keycloak-db:5432/postgres"
