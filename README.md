@@ -37,3 +37,9 @@ To build and run for development run:
 ```bash
 docker compose up --build
 ```
+
+## Updating Keycloak
+
+In order to update Keycloak, you need to
+- update the version in `./Dockerfile` line 6
+- update the version in `./spi-extension/pom.xml` line 12

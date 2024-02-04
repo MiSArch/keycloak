@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  keycloak-db:
+    extends:
+      file: docker-compose-base.yaml
+      service: keycloak-db
+    ports:
+      - 5432:5432
+  keycloak:
+    extends:
+      file: docker-compose-base.yaml
+      service: keycloak
+    ports:
+      - 8080:80
+  keycloak-dapr:
+    extends:
+      file: docker-compose-base.yaml
+      service: keycloak-dapr
+    volumes:
+      - "./.dapr/dapr-config-minimal.yaml:/config.yaml"
+      - "./.dapr/components:/components"
+  placement:
+    image: "daprio/dapr"
+    command: ["./placement", "-port", "50006"]
+    ports:
+      - "50006:50006"
+volumes:
+  keycloak-db-data:

@@ -1395,7 +1395,8 @@
   "smtpServer": {},
   "eventsEnabled": false,
   "eventsListeners": [
-    "jboss-logging"
+    "jboss-logging",
+    "keycloak-dapr-events"
   ],
   "enabledEventTypes": [],
   "adminEventsEnabled": false,
