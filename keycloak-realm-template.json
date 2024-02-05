@@ -94,15 +94,6 @@
         "attributes": {}
       },
       {
-        "id": "119ef67f-dcae-433f-9818-f7782931581b",
-        "name": "seller",
-        "description": "User can manage the items they have access to on the platform (the items they put there themselves)",
-        "composite": false,
-        "clientRole": false,
-        "containerId": "7bce8d43-2850-44ce-94f8-1c566bbc7e26",
-        "attributes": {}
-      },
-      {
         "id": "7e9dcc23-41e9-47fd-b632-3584b14be1a6",
         "name": "uma_authorization",
         "description": "${role_uma_authorization}",
@@ -446,8 +437,7 @@
       "realmRoles": [
         "site-admin",
         "buyer",
-        "employee",
-        "seller"
+        "employee"
       ]
     },
     {
@@ -464,17 +454,7 @@
       "path": "/employees",
       "realmRoles": [
         "employee",
-        "buyer",
-        "seller"
-      ]
-    },
-    {
-      "id": "36da45b8-2485-4591-a82b-7dc772a9de2b",
-      "name": "sellers",
-      "path": "/sellers",
-      "realmRoles": [
-        "buyer",
-        "seller"
+        "buyer"
       ]
     }
   ],

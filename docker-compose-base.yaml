@@ -30,7 +30,7 @@ services:
     expose:
       - "80"
     command:
-      - "start-dev"
+      - "start"
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
