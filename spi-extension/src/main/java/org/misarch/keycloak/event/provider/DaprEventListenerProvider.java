@@ -99,11 +99,13 @@ public class DaprEventListenerProvider implements EventListenerProvider {
         KeycloakModelUtils.runJobInTransaction(session.getKeycloakSessionFactory(), session -> {
             final RealmModel realm = session.realms().getRealm(realmId);
             final UserModel user = session.users().getUserById(realm, userId);
-            log.infof("Registered user [name=\"%s\", email=\"%s\", first name=\"%s\", last name=\"%s\"]", user.getUsername(), user.getEmail(), user.getFirstName(), user.getLastName());
+            log.infof(
+                    "Registered user [name=\"%s\", email=\"%s\", first name=\"%s\", last name=\"%s\"]",
+                    user.getUsername(), user.getEmail(), user.getFirstName(), user.getLastName());
             try {
                 final ObjectMapper objectMapper = new ObjectMapper();
                 final CreateUserDTO event =
-                        new CreateUserDTO(user.getUsername(), user.getFirstName(), user.getLastName());
+                        new CreateUserDTO(user.getUsername(), user.getFirstName(), user.getLastName(), user.getId());
                 final HttpClient httpClient = HttpClient.newHttpClient();
                 final HttpRequest.BodyPublisher bodyPublisher;
                 bodyPublisher = HttpRequest.BodyPublishers.ofString(objectMapper.writeValueAsString(event));
