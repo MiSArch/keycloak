@@ -9,10 +9,6 @@ WORKDIR /app/misarch/template
 COPY keycloak-realm-template.json .
 COPY --from=0 /app/target/keycloak-dapr-events.jar /opt/keycloak/providers/keycloak-dapr-events.jar
 
-ENV KC_DB="postgres"
-ENV KC_DB_URL="jdbc:postgresql://keycloak-db:5432/postgres"
-ENV KC_DB_USERNAME="postgres"
-ENV KC_DB_PASSWORD="postgres"
 ENV KC_HOSTNAME_STRICT="false"
 ENV KC_HTTP_PORT="80"
 ENV KC_HTTP_RELATIVE_PATH="/keycloak"
@@ -21,8 +17,6 @@ ENV KC_PROXY="edge"
 ENV KC_OVERRIDE="false"
 
 ENV SKIP_IMPORT=false
-
-RUN /opt/keycloak/bin/kc.sh build
 
 COPY entrypoint.sh /entrypoint.sh
 

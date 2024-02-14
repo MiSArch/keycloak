@@ -34,6 +34,10 @@ services:
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: "postgres"
+      KC_DB_URL: "jdbc:postgresql://keycloak-db:5432/postgres"
+      KC_DB_USERNAME: "postgres"
+      KC_DB_PASSWORD: "postgres"
     healthcheck:
       test: wget http://localhost:80/health || exit 1
       interval: 10s
