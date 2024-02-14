@@ -46,8 +46,8 @@
   "roles": {
     "realm": [
       {
-        "id": "50248a7f-4c2d-4df8-9e7c-58bd8a51f458",
-        "name": "site-admin",
+        "id": "212f5de8-3b84-46cf-b1b8-fbff2e3209f9",
+        "name": "admin",
         "description": "Has admin access to everything on the site itself (keycloak not included)",
         "composite": false,
         "clientRole": false,
@@ -429,35 +429,7 @@
       ]
     }
   },
-  "groups": [
-    {
-      "id": "dc223304-95a8-4889-aba0-a77444e719d6",
-      "name": "admins",
-      "path": "/admins",
-      "realmRoles": [
-        "site-admin",
-        "buyer",
-        "employee"
-      ]
-    },
-    {
-      "id": "bd1af2aa-6756-4fc8-814b-00f977cbe29c",
-      "name": "buyers",
-      "path": "/buyers",
-      "realmRoles": [
-        "buyer"
-      ]
-    },
-    {
-      "id": "6f9d6c40-02a6-426f-9432-2d29fef42d52",
-      "name": "employees",
-      "path": "/employees",
-      "realmRoles": [
-        "employee",
-        "buyer"
-      ]
-    }
-  ],
+  "groups": [],
   "defaultRole": {
     "id": "aec86ad0-f2b0-497c-83cf-bb00eca17a3b",
     "name": "default-roles-misarch",
@@ -466,9 +438,6 @@
     "clientRole": false,
     "containerId": "7bce8d43-2850-44ce-94f8-1c566bbc7e26"
   },
-  "defaultGroups": [
-    "/buyers"
-  ],
   "requiredCredentials": [
     "password"
   ],
