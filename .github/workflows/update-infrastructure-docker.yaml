@@ -24,7 +24,7 @@ jobs:
           branch: update/keycloak
           token: ${{ secrets.INFRASTRUCTURE_DOCKER_PUSH_SECRET }}
       - name: Set to auto merge
-        run: gh pr merge update/user --auto --merge -R misarch/infrastructure-docker
+        run: gh pr merge update/keycloak --auto --merge -R misarch/infrastructure-docker
         env:
           GH_TOKEN: ${{ secrets.INFRASTRUCTURE_DOCKER_PUSH_SECRET }}
 
