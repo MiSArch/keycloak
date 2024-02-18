@@ -1,0 +1,32 @@
+name: Update infrastructure-k8s submodule
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  schema:
+    name: Update infrastructure-k8s submodule
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: "misarch/infrastructure-k8s"
+          submodules: true
+      - name: Update submodule
+        run: |
+          cd keycloak
+          git checkout ${{ github.sha }}
+      - uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: Update keycloak repo
+          branch: update/keycloak
+          token: ${{ secrets.INFRASTRUCTURE_K8S_PUSH_SECRET }}
+      - name: Set to auto merge
+        run: gh pr merge update/keycloak --auto --merge -R misarch/infrastructure-k8s
+        env:
+          GH_TOKEN: ${{ secrets.INFRASTRUCTURE_K8S_PUSH_SECRET }}
+
