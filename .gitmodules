@@ -1,0 +1,3 @@
+[submodule "keycloak-user-creation-events"]
+	path = keycloak-user-creation-events
+	url = ../keycloak-user-creation-events/
