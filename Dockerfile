@@ -1,5 +1,5 @@
 FROM maven:3.9.6-eclipse-temurin-17
-COPY spi-extension /app
+COPY keycloak-user-creation-events /app
 WORKDIR /app
 RUN mvn clean compile package
 

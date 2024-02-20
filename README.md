@@ -42,4 +42,4 @@ docker compose up --build
 
 In order to update Keycloak, you need to
 - update the version in `./Dockerfile` line 6
-- update the version in `./spi-extension/pom.xml` line 12
+- update the version in `./keycloak-user-creation-events/pom.xml` line 12
