@@ -19,8 +19,6 @@ variables see the [keycloak documentation](https://www.keycloak.org/server/all-c
     - default: `false`
 - `KC_HTTP_PORT`:
     - default: `80`
-- `KC_HTTP_RELATIVE_PATH`:
-    - default: `/keycloak`
 - `KC_PROXY`:
     - default: `edge`
 - `KC_OVERRIDE`:
