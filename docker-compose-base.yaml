@@ -34,6 +34,7 @@ services:
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HOSTNAME_PATH: /keycloak
     healthcheck:
       test: wget http://localhost:80/health || exit 1
       interval: 10s
