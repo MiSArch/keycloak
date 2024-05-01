@@ -47,7 +47,7 @@ services:
     command: [
       "./daprd",
       "--app-id", "keycloak",
-      "--app-port", "80",
+      "--app-port", "${EXPERIMENT_CONFIG_SIDECAR_PORT:-80}",
       "--dapr-http-port", "3500",
       "-placement-host-address", "placement:50006",
       "--config", "/config.yaml",
