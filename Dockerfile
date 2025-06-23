@@ -19,6 +19,7 @@ ENV KC_HTTP_RELATIVE_PATH="/keycloak"
 ENV KC_PROXY="edge"
 # If the following is not set or true, the Misarch realm will be dropped whenever you start the container. Only recommended for development
 ENV KC_OVERRIDE="false"
+ENV KC_METRICS_ENABLED="true"
 
 ENV SKIP_IMPORT=false
 
